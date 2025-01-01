@@ -98,7 +98,7 @@ with st.expander("💵 Enter Transaction Details"):
     st.markdown('<p class="sub-header">3️⃣ Transaction Analysis</p>', unsafe_allow_html=True)
     with st.form("transaction_form"):
         transaction_id = st.text_input("Transaction ID:", placeholder="e.g., TX12345")
-        transaction_amount = st.number_input("Transaction Amount (in USD):", min_value=0.0, step=0.01)
+        transaction_amount = st.number_input("Transaction Amount (in INR):", min_value=0.0, step=0.5)
         transaction_date = st.date_input("Transaction Date")
         transaction_description = st.text_area("Transaction Description:", placeholder="e.g., Payment for invoice #5678")
         submitted = st.form_submit_button("🔍 Analyze Transaction")
