@@ -66,9 +66,14 @@ Select a task below to get started.
 with st.expander("📂 Upload Financial Message File", expanded=True):
     st.markdown('<p class="sub-header">1️⃣ Upload a File</p>', unsafe_allow_html=True)
     uploaded_file = st.file_uploader("Upload a text file containing messages to analyze:", type=["txt"])
+    
     if uploaded_file:
         file_content = uploaded_file.read().decode("utf-8")
         st.text_area("📄 File Content Preview:", file_content, height=150)
+        if st.button("🔍 Analyze File"):
+            with st.spinner("Analyzing uploaded file..."):
+                time.sleep(2)
+            st.success("✔️ Placeholder Result: No fraud detected in the uploaded file.")
     else:
         st.markdown('<p class="small-text">No file uploaded yet.</p>', unsafe_allow_html=True)
 
