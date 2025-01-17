@@ -45,7 +45,7 @@ st.markdown("""
 # Load the model
 @st.cache_resource
 def load_model():
-    with open("C:/Users/arjun/Assignment/vectorizer.pkl", "rb") as vec_file, open("C:/Users/arjun/Assignment/spam_text.pkl", "rb") as file:
+    with open("vectorizer.pkl", "rb") as vec_file, open("spam_text.pkl", "rb") as file:
         vectorizer = pickle.load(vec_file)
         model = pickle.load(file)
     return vectorizer, model
@@ -84,10 +84,10 @@ with st.expander("📂 Upload Financial Message File", expanded=True):
             with st.spinner("Analyzing uploaded file..."):
                 time.sleep(2)
             # Placeholder for multiple-line analysis
-                messages = [line.strip() for line in file_content.split("\n") if line.strip()]
-                transformed_messages = vectorizer.transform(messages)
-                predictions = model.predict(transformed_messages)
-                fraud_count = (predictions == 'spam').sum()
+            messages = [line.strip() for line in file_content.split("\n") if line.strip()]
+            transformed_messages = vectorizer.transform(messages)
+            predictions = model.predict(transformed_messages)
+            fraud_count = (predictions == 'spam').sum()
             st.success(f"✔️ Analysis Complete: Fraud Detected in {fraud_count} message(s).")
 
 # Section 2: Manual Message Input
@@ -102,20 +102,20 @@ with st.expander("✍️ Enter a Financial Message", expanded = True):
         if user_message.strip():
             with st.spinner("Analyzing message..."):
                 time.sleep(1)
-                from nltk.corpus import stopwords
-                from nltk.stem.porter import PorterStemmer
-                import re
-                port_stem = PorterStemmer()
-                def stemming (content):
-                    stemmed_content = re.sub('[^a-zA-z]',' ', content)
-                    stemmed_content = stemmed_content.lower()
-                    stemmed_content = stemmed_content.split()
-                    stemmed_content = [port_stem.stem(word) for word in stemmed_content if not word in stopwords.words("english")]
-                    stemmed_content = ' '.join(stemmed_content)
-                    return stemmed_content
-                message = stemming(user_message)
-                transformed_message = vectorizer.transform([message])  # Transform the input text
-                prediction = model.predict(transformed_message)
+            from nltk.corpus import stopwords
+            from nltk.stem.porter import PorterStemmer
+            import re
+            port_stem = PorterStemmer()
+            def stemming (content):
+                stemmed_content = re.sub('[^a-zA-z]',' ', content)
+                stemmed_content = stemmed_content.lower()
+                stemmed_content = stemmed_content.split()
+                stemmed_content = [port_stem.stem(word) for word in stemmed_content if not word in stopwords.words("english")]
+                stemmed_content = ' '.join(stemmed_content)
+                return stemmed_content
+            message = stemming(user_message)
+            transformed_message = vectorizer.transform([message])  # Transform the input text
+            prediction = model.predict(transformed_message)
             if prediction == 'spam':
                 st.error("🚨 Fraud detected in the message!")
             else:
