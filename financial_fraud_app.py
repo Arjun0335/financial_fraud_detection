@@ -102,19 +102,7 @@ with st.expander("✍️ Enter a Financial Message", expanded = True):
         if user_message.strip():
             with st.spinner("Analyzing message..."):
                 time.sleep(1)
-            from nltk.corpus import stopwords
-            from nltk.stem.porter import PorterStemmer
-            import re
-            port_stem = PorterStemmer()
-            def stemming (content):
-                stemmed_content = re.sub('[^a-zA-z]',' ', content)
-                stemmed_content = stemmed_content.lower()
-                stemmed_content = stemmed_content.split()
-                stemmed_content = [port_stem.stem(word) for word in stemmed_content if not word in stopwords.words("english")]
-                stemmed_content = ' '.join(stemmed_content)
-                return stemmed_content
-            message = stemming(user_message)
-            transformed_message = vectorizer.transform([message])  # Transform the input text
+            transformed_message = vectorizer.transform([user_message])  # Transform the input text
             prediction = model.predict(transformed_message)
             if prediction == 'spam':
                 st.error("🚨 Fraud detected in the message!")
