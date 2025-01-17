@@ -2,3 +2,5 @@ scikit-learn
 streamlit
 vectorizer
 nltk
+stopwords
+PorterStemmer
