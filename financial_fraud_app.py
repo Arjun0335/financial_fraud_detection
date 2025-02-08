@@ -51,7 +51,7 @@ def load_fraud_resources():
 @st.cache_resource
 def load_spam_detection_resources():
     # Load LSTM model and tokenizer for website spam detection
-    lstm_model = load_model("C:/Users/arjun/Assignment/website_spam_link.h5")  # Replace with LSTM model path
+    lstm_model = load_model("website_spam_link.h5")  # Replace with LSTM model path
     tokenizer = Tokenizer(num_words=10000, oov_token="<OOV>")
     return lstm_model, tokenizer
 
