@@ -84,7 +84,6 @@ st.sidebar.title("🌟 Navigation")
 st.sidebar.info("""
 Use this app to:
 - Detect fraud in financial messages or files
-- Identify whether a website URL is spam
 """)
 
 # Main introduction
@@ -94,7 +93,6 @@ st.info("""
 Welcome to the **Fraud & Website Spam Detection System**!  
 This tool uses advanced machine learning models to analyze:
 1. Financial messages for potential fraud
-2. Website URLs for spam activity  
 Select a section below to begin.
 """)
 
@@ -132,6 +130,7 @@ with st.expander("💳 Financial Fraud Detection", expanded=True):
             st.warning("⚠️ Please enter a valid message.")
 
 # Section 2: Website Spam Detection
+'''
 with st.expander("🌐 Website Spam Detection", expanded=True):
     st.markdown('<p class="sub-header">3️⃣ URL Spam Detection</p>', unsafe_allow_html=True)
     website_url = st.text_input("Enter the website URL for spam detection:")
@@ -146,7 +145,7 @@ with st.expander("🌐 Website Spam Detection", expanded=True):
                 st.success(f"✔️ The URL '{website_url}' is classified as Not Spam.")
         else:
             st.warning("⚠️ Please enter a valid URL.")
-
+'''
 # Footer
 st.write("---")
 st.markdown('<p class="footer">Developed with ❤️ for secure web experiences | © 2024</p>', unsafe_allow_html=True)
