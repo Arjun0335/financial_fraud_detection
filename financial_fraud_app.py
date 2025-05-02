@@ -129,23 +129,6 @@ with st.expander("💳 Financial Fraud Detection", expanded=True):
         else:
             st.warning("⚠️ Please enter a valid message.")
 
-# Section 2: Website Spam Detection
-'''
-with st.expander("🌐 Website Spam Detection", expanded=True):
-    st.markdown('<p class="sub-header">3️⃣ URL Spam Detection</p>', unsafe_allow_html=True)
-    website_url = st.text_input("Enter the website URL for spam detection:")
-    if st.button("🔍 Check URL"):
-        if website_url.strip():
-            with st.spinner("Analyzing the website..."):
-                time.sleep(1)
-                result = predict_website_spam(website_url, lstm_model, lstm_tokenizer)
-            if result == "Spam":
-                st.error(f"🚨 The URL '{website_url}' is classified as Spam.")
-            else:
-                st.success(f"✔️ The URL '{website_url}' is classified as Not Spam.")
-        else:
-            st.warning("⚠️ Please enter a valid URL.")
-'''
 # Footer
 st.write("---")
 st.markdown('<p class="footer">Developed with ❤️ for secure web experiences | © 2024</p>', unsafe_allow_html=True)
