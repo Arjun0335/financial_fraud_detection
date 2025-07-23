@@ -1,6 +1,7 @@
 import os
 import time
 import tempfile
+os.environ["STREAMLIT_WATCH_MODE"] = "false"
 import streamlit as st
 from transformers import pipeline  # Hugging Face 🤗
 from dotenv import load_dotenv     # For loading AWS keys from .env
