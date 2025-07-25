@@ -9,3 +9,5 @@ Dataset contains **746 Spam** messages and **4826 ham (non-spam)** messages
 This model also gives chances or percentage of message being spam or ham.
 
 ![My website](./images/result.png)
+
+Project Link: [click here](https://financialfrauddetection.streamlit.app/)
